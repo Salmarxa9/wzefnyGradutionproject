@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وظفني</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Styles for the chatbot button and popup */
+        #chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        #chatbot-toggle {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #chatbot-window {
+            position: absolute;
+            bottom: 60px;
+            right: 0;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            display: none; /* Hide by default */
+        }
+
+        #chatbot-window.hidden {
+            display: none; /* Keep it hidden when the class is applied */
+        }
+
+        #chatbot-messages {
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .user-message, .bot-message {
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .user-message {
+            background-color: #e1ffc7;
+            align-self: flex-end;
+        }
+
+        .bot-message {
+            background-color: #f1f1f1;
+            align-self: flex-start;
+        }
+
+        #chatbot-input {
+            width: calc(100% - 60px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #chatbot-send {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+              
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">الصفحة الرئيسية</a></li>
+                    <li id="login-link"><a href="login.html">تسجيل دخول</a></li>
+                  
+                    <li><a href="employee.html">خبرائنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-text">
+                <h2 style="color: black;">مرحباً بك في وظفني</h2>
+                <p style="color: black;">نساعدك في العثور على فرص عمل من خلال التواصل مع خبراء في مجالك. ابدأ رحلتك المهنية الآن!</p>
+                <a href="register.html" style="color: rgb(255, 255, 255); background-color: #007bff; padding: 10px 20px; border-radius: 4px; text-decoration: none; display: inline-block;">ابدأ الآن</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container about-container">
+            <div class="about-image">
+                <img src="job_interview.png" alt="من نحن">
+            </div>
+            <div class="about-text">
+                <h3>من نحن</h3>
+                <p>موقع التوظيف هو منصة تساعدك في التفاعل مع خبراء التوظيف للحصول على فرص عمل مناسبة لك. نقوم باختبار مهاراتك وربطك مع أفضل الخبراء في مجالك.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <h2 class="section-title">كيفية عمل الموقع</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>التسجيل</h4>
+                    <p>أنشئ حسابك .</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>التواصل مع الخبراء</h4>
+                    <p>  يمكنك التواصل مع خبراء التوظيف.</p>
+                </div>
+            
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>اشترك للتواصل</h4>
+                    <p>سجل دخول في الموقع لتتمكن من التواصل المباشر مع الخبراء.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot Button -->
+    <div id="chatbot">
+        <div id="chatbot-window" class="hidden">
+            <div id="chatbot-messages"></div>
+            <input type="text" id="chatbot-input" placeholder="قم بكتابة طلبك هنا...">
+            <button id="chatbot-send">إرسال</button>
+        </div>
+    </div>
+
+    <script>
+        // Check login status on page load
+        window.addEventListener("load", function() {
+            const isLoggedIn = localStorage.getItem("isLoggedIn");
+            if (isLoggedIn === "true") {
+                const loginLink = document.getElementById("login-link");
+                if (loginLink) {
+                    loginLink.style.display = "none";
+                }
+            }
+        });
+    </script>
+</body>
+</html>

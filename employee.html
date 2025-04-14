@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وظفني</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .employees-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .employee-item {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            width: 250px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            transition: transform 0.2s;
+        }
+        .employee-item:hover {
+            transform: scale(1.05);
+        }
+        .employee-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .section-title {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        /* Popup styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: right;
+            width: 300px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+        }
+        .close-btn {
+            cursor: pointer;
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .btn-primary, .btn-request {
+            background-color: #0c345f; /* اللون الأزرق */
+            color: white;
+            border: none;
+            padding: 8px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover, .btn-request:hover {
+            background-color: #b35700; /* ظل أغمق عند التحويم */
+        }
+        .logo img {
+    width: auto;
+    height: 100px; /* Adjust as needed */
+    display: block;
+}
+    </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-container">
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo.jpg" alt="وظفني Logo">
+            </a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">الصفحة الرئيسية</a></li>
+                <li><a href="login.html">تسجيل دخول</a></li>
+                <li><a href="adminpaned.html">الادمن </a></li>
+                <li><a href="employee.html">خبرائنا</a></li>
+                <li><a href="companyadd.html">اضافه الوظائف</a></li>
+            </ul>
+        </nav>
+    </div>
+  </header>
+
+    <!-- Employees Section -->
+    <section class="employees">
+        <div class="container">
+            <h2 class="section-title">الموظفون المتاحون للتواصل</h2>
+            <div class="employees-grid">
+                <div class="employee-item">
+                    <img src="employee1.jpg" alt="محمد أحمد">
+                    <h4>محمد أحمد</h4>
+                    <p>مجال: تطوير البرمجيات</p>
+                    <p>الخبرة: 10 سنوات</p>
+                    <button class="btn-request" onclick="openPopup()">تواصل مع الموظف</button>
+                </div>
+                <div class="employee-item">
+                    <img src="employee2.jpg" alt="خالد علي">
+                    <h4>خالد علي</h4>
+                    <p>مجال: تصميم الجرافيك</p>
+                    <p>الخبرة: 7 سنوات</p>
+                    <button class="btn-request" onclick="openPopup()">تواصل مع الموظف</button>
+                </div>
+                <div class="employee-item">
+                    <img src="employee3.jpg" alt="مريم سعيد">
+                    <h4>مريم سعيد</h4>
+                    <p>مجال: إدارة المشاريع</p>
+                    <p>الخبرة: 12 سنة</p>
+                    <button class="btn-request" onclick="openPopup()">تواصل مع الموظف</button>
+                </div>
+                <div class="employee-item">
+                    <img src="employee4.jpg" alt="نورة محمد">
+                    <h4>نورة محمد</h4>
+                    <p>مجال: التسويق الرقمي</p>
+                    <p>الخبرة: 5 سنوات</p>
+                    <button class="btn-request" onclick="openPopup()">تواصل مع الموظف</button>
+                </div>
+                <div class="employee-item">
+                    <img src="employee5.jpg" alt="يارا عبدالكريم">
+                    <h4>يارا عبدالكريم</h4>
+                    <p>مجال: تحليل البيانات</p>
+                    <p>الخبرة: 8 سنوات</p>
+                    <button class="btn-request" onclick="openPopup()">تواصل مع الموظف</button>
+                </div>
+                <div class="employee-item">
+                    <img src="employee6.jpg" alt="حسام يوسف">
+                    <h4>حسام يوسف</h4>
+                    <p>مجال: استشارات الأعمال</p>
+                    <p>الخبرة: 6 سنوات</p>
+                    <button class="btn-request" onclick="openPopup()">تواصل مع الموظف</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popup Form Section -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h2>طلب التواصل</h2>
+            <form action="submit_contact_request.html" method="POST">
+                <label for="name">الاسم:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">البريد الإلكتروني:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">رقم الهاتف:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="message">رسالة:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit" class="btn btn-primary">إرسال الطلب</button>
+            </form>
+            <div class="close-btn" onclick="closePopup()">إغلاق</div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-info">
+                <h3>موقع التوظيف</h3>
+                <p>نحن هنا لمساعدتك في العثور على أفضل فرص العمل والتواصل مع الخبراء.</p>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="index.html">الصفحة الرئيسية</a></li>
+                    <li><a href="register.html">إنشاء حساب</a></li>
+                    <li><a href="login.html">تسجيل دخول</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 موقع التوظيف - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <script>
+        function openPopup() {
+            document.getElementById('popup').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
